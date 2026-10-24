@@ -1,0 +1,39 @@
+import tkinter as tk
+import random
+
+root = tk.Tk()
+root.title("Random Colour Generator")
+root.geometry("350x400")
+
+colours = [
+    "red", "blue", "green", "yellow",
+    "purple", "orange", "pink", "cyan"
+]
+
+boxes = []
+
+for i in range(4):
+    box = tk.Label(
+        root,
+        text=f"C{i + 1}",
+        width=10,
+        height=4,
+        bg="white",
+        font=("Arial", 18)
+    )
+    box.grid(row=i // 2, column=i % 2, padx=10, pady=10)
+    boxes.append(box)
+
+def change_colours():
+    for box in boxes:
+        box.config(bg=random.choice(colours))
+
+button = tk.Button(
+    root,
+    text="Click Me",
+    command=change_colours,
+    font=("Arial", 14)
+)
+button.grid(row=2, column=0, columnspan=2, pady=20)
+
+root.mainloop()
